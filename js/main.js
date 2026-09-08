@@ -1,39 +1,15 @@
-const GRUPOS = [
-      "Arachnix", 
-      "Capsa Tech", 
-      "Code.X", 
-      "DualCore", 
-      "JIF Tech", 
-      "New Leaf Technology", 
-      "PinacoTech", 
-      "Vértice", 
-      "WizTech Secret"
-    ];
+import { GRUPOS } from "./componentes/grupos.js";
+import { MUSEUS } from "./componentes/museus.js";
 
-const MUSEUS = [
-      "MAC-USP", 
-      "Memorial da Resistência", 
-      "CCBB SP", 
-      "Casa das Rosas", 
-      "Pinacoteca", 
-      "Museu do Futebol", 
-      "Museu da Língua Portuguesa", 
-      "Museu Afro Brasil", 
-      "Museu da Imigração", 
-      "Museu de Zoologia USP", 
-      "IMS Paulista", 
-      "Itaú Cultural", 
-      "Japan House", 
-      "Museu das Favelas", 
-      "CAIXA Cultural"
-    ];
+const btn = document.getElementById("btn");
+btn.addEventListener("click", sortear);
 
 async function sortear() {
     const lista = document.getElementById("resultado");
     lista.innerHTML = "";
     for (const grupo of GRUPOS) {
         await esperar(1000);
-        museusSorteados = selecionarMuseus();
+        let museusSorteados = selecionarMuseus();
         const li = document.createElement("li");
         li.className = "bem-card bem-card--flat bem-p-sm bem-text-xs";
         li.innerHTML = `<b>${grupo}</b> : ${museusSorteados.join(", ")}`;
