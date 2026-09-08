@@ -28,11 +28,11 @@ const MUSEUS = [
       "CAIXA Cultural"
     ];
 
-function mostrarGrupos() {
+function sortear() {
     const lista = document.getElementById("resultado");
     lista.innerHTML = "";
     GRUPOS.forEach(grupo => {
-        museusSorteados = MUSEUS.sort(() => Math.random() - 0.5).slice(0, 2);
+        museusSorteados = MUSEUS.sort(() => Math.random() - 0.5).slice(0, 1);
         const li = document.createElement("li");
         li.className = "bem-card bem-card--flat bem-p-sm bem-text-xs";
         li.innerHTML = `<b>${grupo}</b> : ${museusSorteados.join(", ")}`;
@@ -40,4 +40,3 @@ function mostrarGrupos() {
     });
        
 }
-mostrarGrupos()
