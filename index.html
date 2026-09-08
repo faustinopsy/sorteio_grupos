@@ -7,6 +7,26 @@
   <link rel="stylesheet" href="https://pensebem.faustinopsy.com/microframework.css" />
 </head>
 <body>
-
+  <main class="bem-container bem-container--narrow bem-p-md bem-mt-lg">
+    <div class="bem-card bem-mb-md">
+      <div class="bem-card__body bem-flex bem-items-center bem-justify-between bem-flex-wrap bem-gap-sm">
+        <strong id="status">9 grupos / 15 museus prontos.</strong>
+        <button id="btn" class="bem-btn bem-btn--primary" onclick="sortear()">Sortear</button>
+      </div>
+    </div>
+    <div class="bem-card bem-mb-md">
+      <div class="bem-card__body bem-p-sm">
+        <ul id="resultado" class="lista-sorteio">
+          <li class="bem-p-md bem-text-center bem-text-muted-util">Aguardando sorteio...</li>
+        </ul>
+      </div>
+    </div>
+    <div id="sobrasCard" class="bem-alert bem-alert--warning lista-sorteio__alerta--oculto">
+      <div class="bem-alert__content bem-w-full">
+        <div class="bem-alert__title">Sobraram na Urna:</div>
+        <ul id="sobras" class="bem-grid bem-grid-auto bem-gap-sm bem-mt-sm lista-sorteio"></ul>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
