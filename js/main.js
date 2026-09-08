@@ -38,7 +38,7 @@ function sortear() {
         li.innerHTML = `<b>${grupo}</b> : ${museusSorteados.join(", ")}`;
         lista.appendChild(li);
     });
-       
+    sortearSobras();
 }
 function selecionarMuseus(){
     const museusSelecionados = [];
@@ -50,4 +50,16 @@ function selecionarMuseus(){
         
     }
     return museusSelecionados;
+}
+
+function sortearSobras() {
+    const listaSobras = document.getElementById("sobras");
+    listaSobras.innerHTML = ""; 
+    MUSEUS.forEach(museu => {
+        const li = document.createElement("li");
+        li.className = "bem-card bem-card--flat bem-p-sm bem-text-xs";
+        li.textContent = museu;
+        listaSobras.appendChild(li);
+    });
+    document.getElementById("btn").style.display = "none";
 }
