@@ -1,10 +1,15 @@
 import { GRUPOS } from "./componentes/grupos.js";
 import { MUSEUS } from "./componentes/museus.js";
+import { criarGeradorAleatorio } from "./componentes/semente.js";
 
+let randomComSeed
 const btn = document.getElementById("btn");
 btn.addEventListener("click", sortear);
 
 async function sortear() {
+    const seedInput = document.getElementById("seedInput");
+    const seedValue = parseInt(seedInput.value);
+    randomComSeed = criarGeradorAleatorio(seedValue);
     const lista = document.getElementById("resultado");
     lista.innerHTML = "";
     for (const grupo of GRUPOS) {
@@ -20,11 +25,12 @@ async function sortear() {
 function selecionarMuseus(){
     const museusSelecionados = [];
     while (museusSelecionados.length < 1) {
-        const indiceAleatorio = Math.floor(Math.random() * MUSEUS.length);
+              MUSEUS.sort();
+        const indiceAleatorio = Math.floor(randomComSeed() * MUSEUS.length);
         const museuSorteado = MUSEUS[indiceAleatorio];
               museusSelecionados.push(museuSorteado);
               MUSEUS.splice(indiceAleatorio, 1);
-        
+              MUSEUS.sort();
     }
     return museusSelecionados;
 }
@@ -44,3 +50,5 @@ async function sortearSobras() {
 function esperar(tempo) {
   return new Promise(resolve => setTimeout(resolve, tempo));
 }
+
+
