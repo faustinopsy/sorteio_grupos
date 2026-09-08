@@ -28,17 +28,18 @@ const MUSEUS = [
       "CAIXA Cultural"
     ];
 
-function sortear() {
+async function sortear() {
     const lista = document.getElementById("resultado");
     lista.innerHTML = "";
-    GRUPOS.forEach(grupo => {
+    for (const grupo of GRUPOS) {
+        await esperar(1000);
         museusSorteados = selecionarMuseus();
         const li = document.createElement("li");
         li.className = "bem-card bem-card--flat bem-p-sm bem-text-xs";
         li.innerHTML = `<b>${grupo}</b> : ${museusSorteados.join(", ")}`;
         lista.appendChild(li);
-    });
-    sortearSobras();
+    }
+    await sortearSobras();
 }
 function selecionarMuseus(){
     const museusSelecionados = [];
@@ -52,7 +53,7 @@ function selecionarMuseus(){
     return museusSelecionados;
 }
 
-function sortearSobras() {
+async function sortearSobras() {
     const listaSobras = document.getElementById("sobras");
     listaSobras.innerHTML = ""; 
     MUSEUS.forEach(museu => {
@@ -62,4 +63,8 @@ function sortearSobras() {
         listaSobras.appendChild(li);
     });
     document.getElementById("btn").style.display = "none";
+}
+
+function esperar(tempo) {
+  return new Promise(resolve => setTimeout(resolve, tempo));
 }
